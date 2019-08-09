@@ -27,7 +27,7 @@ public class CalculadoraController implements Initializable {
     @FXML
     private Label lblResultado;
     
-    private Long numero1;
+    private double numero1;
     private String operador;
     private boolean start;
     private Model model;
@@ -62,14 +62,14 @@ public class CalculadoraController implements Initializable {
                 return;
             }            
             operador = v;
-            numero1 = Long.parseLong(this.lblResultado.getText());
+            numero1 = Double.parseDouble(this.lblResultado.getText());
             lblResultado.setText("");
         } else {
             if (operador.isEmpty()){
                 return;
             }
-            Long numero2 = Long.parseLong(this.lblResultado.getText());
-            float resultado = model.calcular(numero1, numero2, this.operador);
+            double numero2 = Double.parseDouble(this.lblResultado.getText());
+            double resultado = model.calcular(numero1, numero2, this.operador);
             lblResultado.setText(String.valueOf(resultado));
             this.operador = "";
             this.start = true;
